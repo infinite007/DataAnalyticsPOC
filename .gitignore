@@ -1,3 +1,4 @@
 .vscode
 Backend/shipwreck/__pycache__
 Frontend/analytics/.gitignore
+Backend/shipwreck/.env
