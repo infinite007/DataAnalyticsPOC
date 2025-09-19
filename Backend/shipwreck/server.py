@@ -8,7 +8,10 @@ class QueryRequestItem(BaseModel):
 
 
 app = FastAPI()
-agent = SQLAgent()
+agent = SQLAgent(
+    db_uri="postgresql://postgres:postgres@localhost:5432/university",
+    llm_model="gpt-4o-mini"
+)
 
 
 app.add_middleware(

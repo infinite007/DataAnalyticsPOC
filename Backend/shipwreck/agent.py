@@ -4,10 +4,13 @@ from langchain_community.agent_toolkits.sql.toolkit import SQLDatabaseToolkit
 from langchain_community.utilities import SQLDatabase
 from config import sql_agent_args
 from dataclasses import dataclass
+from dotenv import load_dotenv
 from typing import List, Dict
 import pandas as pd
 import os
 
+
+load_dotenv()
 
 @dataclass
 class SQLAgentOutput:
@@ -20,7 +23,7 @@ class SQLAgent:
     def __init__(self, db_uri="sqlite:///../data/student_data.sqlite", 
                  llm_model="gpt-3.5-turbo", llm_temperature=0) -> None:
         
-        openai_api_key = os.environ["OPENAI_API_KEY"]
+        openai_api_key = os.getenv("OPENAI_API_KEY")
         self.db = SQLDatabase.from_uri(db_uri)
 
         self.llm = ChatOpenAI(model=llm_model, 
